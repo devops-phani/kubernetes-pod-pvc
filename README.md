@@ -53,4 +53,20 @@ spec:
   tolerations:
   - effect: NoSchedule
     operator: Exists
-```  
+```
+
+Sleep forever
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu:latest
+    # Just spin & wait forever
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+```
